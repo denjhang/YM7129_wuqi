@@ -9,8 +9,12 @@
 // Analyzed by madscient. Reference: opk_register html/Sheet1.html
 // ============================================================
 
-// Test register - set to 0xFF on init
-#define YM7129_REG_TEST         0x01
+// Reg 0x01: Rhythm (drum) L/R output select
+//   bit7-4 = Rhy3-0 R,  bit3-0 = Rhy3-0 L
+// 0xFF = all four drum channels on both L and R (init default)
+#define YM7129_REG_RHY_PAN      0x01
+#define YM7129_RHY_PAN_ALL      0xFF
+#define YM7129_REG_TEST         YM7129_REG_RHY_PAN
 
 // Reg 0x10-0x1F: Kon / VIB / WS / ML  (Modulator @ offset, Carrier @ offset+2)
 // Bit7: KON (key-on), Bit6: VIB, Bit5: WS, Bit3-0: ML

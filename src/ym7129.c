@@ -82,8 +82,8 @@ void ym7129_mute(uint8_t slot) {
 void ym7129_init(uint8_t slot) {
     memset(ch_state[slot], 0, sizeof(ch_state[slot]));
 
-    // Test register must be FF
-    ym7129_write_reg(slot, YM7129_REG_TEST, 0xFF);
+    // $01 = drum L/R output select: 0xFF = all four drum channels on L and R
+    ym7129_write_reg(slot, YM7129_REG_RHY_PAN, YM7129_RHY_PAN_ALL);
     spfm_flush();
 
     // Full register init per waveform analysis section 6:

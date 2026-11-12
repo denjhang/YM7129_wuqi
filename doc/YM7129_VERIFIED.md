@@ -33,7 +33,7 @@ void ym7129_write_reg(uint8_t slot, uint8_t addr, uint8_t data) {
 
 | 地址范围 | 功能 | 位定义 |
 |----------|------|--------|
-| $01 | TEST | 初始化写 $FF |
+| $01 | 鼓左右声道选择 | bit0-3=Rhy0-3 L, bit4-7=Rhy0-3 R（写 $FF = 四路鼓全开 L+R） |
 | $10-$1F | KON/VIB/WS/MUL | bit7=KON, bit6=VIB, bit5=WS, bit3-0=MUL |
 | $20-$2F | DP/TL | bit7=DP, bit6-0=TL (0=最响) |
 | $30-$3F | AR/DR | bit7-4=AR, bit3-0=DR |
@@ -60,7 +60,7 @@ Carrier   = base + offset + 2
 每次上电后芯片内部状态不确定，必须把**所有** FM 寄存器写一遍确定值：
 
 ```
-$01 = FF                     (TEST)
+$01 = FF                     (鼓左右声道: 4 个节奏通道全部 L+R)
 
 每个通道 (ch 0-7, offset = ch_offset[ch]):
   Modulator:
