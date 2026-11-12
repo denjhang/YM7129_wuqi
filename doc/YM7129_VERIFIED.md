@@ -117,6 +117,7 @@ flush
 | 3 | O.HH | H(hi) |
 | 4 | Tom | L(low) |
 | 5 | Ride | H(hi) |
+| 6 | Play all (同时播放全部采样) | - |
 
 ### 触发方式
 - **$84 上升沿触发**: 先写 $84=clear, 等待, 再写 $84=set
